@@ -1,0 +1,50 @@
+{
+  "zeroconf": {
+    "scanner": "zeroconf",
+    "timestamp": "2026-02-09T16:26:30.793084",
+    "services_found": 1,
+    "devices_found": 1,
+    "devices": {
+      "192.168.0.156": {
+        "ip": "192.168.0.156",
+        "hostname": "Manans-MacBook-Pro.local.",
+        "services": [
+          {
+            "type": "_airplay",
+            "name": "Manan\u2019s MacBook Pro._airplay._tcp.local.",
+            "port": 7000,
+            "properties": {
+              "act": "2",
+              "acl": "0",
+              "deviceid": "0E:22:43:C2:08:A9",
+              "fex": "1c9/St5PFzg2IYxA",
+              "features": "0x4A7FCFD5,0x38174FDE",
+              "rsf": "0x8",
+              "flags": "0x204",
+              "gid": "97A50D6F-8130-4363-AE55-66B63BE7D103",
+              "igl": "0",
+              "gcgl": "0",
+              "model": "Mac16,1",
+              "at": "4",
+              "protovers": "1.1",
+              "pi": "964b2fe2-4cb4-48a4-8eff-7195ffdfbf70",
+              "psi": "0D2243C2-08A9-440E-9145-BAD424C51C21",
+              "pk": "b5ff71c8e2cc08560f90b4635c8b76104ab6015ab7a9635191d17afc563ed553",
+              "srcvers": "890.79.5"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "arp": {
+    "scanner": "arp",
+    "timestamp": "2026-02-09T16:26:40.811515",
+    "error": "Sniffing and sending packets is not available at layer 2: winpcap is not installed. You may use conf.L3socket or conf.L3socket6 to access layer 3"
+  },
+  "scapy": {
+    "scanner": "scapy",
+    "timestamp": "2026-02-09T16:26:40.826523",
+    "error": "Sniffing and sending packets is not available at layer 2: winpcap is not installed. You may use conf.L3socket or conf.L3socket6 to access layer 3"
+  }
+}

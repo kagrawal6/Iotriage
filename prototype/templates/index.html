@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoTriage - Network Security Scanner</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1>IoTriage</h1>
+                    <p class="subtitle">Network Security Scanner</p>
+                </div>
+            </div>
+            <div id="status-badge" class="badge badge-loading">Checking...</div>
+        </header>
+
+        <!-- Scan Controls -->
+        <section class="scan-controls">
+            <div class="input-group">
+                <label for="target">Network Target</label>
+                <div class="input-row">
+                    <input type="text" id="target" placeholder="192.168.0.0/24" value="192.168.0.0/24">
+                    <button id="scan-btn" onclick="startScan()">
+                        <span class="btn-text">Scan Network</span>
+                        <span class="btn-loading" style="display:none;">
+                            <span class="spinner"></span> Scanning...
+                        </span>
+                    </button>
+                </div>
+                <p class="hint" id="scan-hint">Enter an IP address or CIDR range to scan your network.</p>
+            </div>
+        </section>
+
+        <!-- Summary Cards -->
+        <section id="summary" class="summary" style="display:none;">
+            <div class="card summary-card">
+                <div class="card-number" id="total-devices">0</div>
+                <div class="card-label">Devices Found</div>
+            </div>
+            <div class="card summary-card card-high">
+                <div class="card-number" id="high-risk">0</div>
+                <div class="card-label">High Risk</div>
+            </div>
+            <div class="card summary-card card-medium">
+                <div class="card-number" id="medium-risk">0</div>
+                <div class="card-label">Medium Risk</div>
+            </div>
+            <div class="card summary-card card-low">
+                <div class="card-number" id="low-risk">0</div>
+                <div class="card-label">Low Risk</div>
+            </div>
+        </section>
+
+        <!-- Device List -->
+        <section id="devices" class="devices">
+            <!-- Filled by JavaScript -->
+        </section>
+
+        <!-- Empty State -->
+        <section id="empty-state" class="empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+            </svg>
+            <h3>No scan results yet</h3>
+            <p>Click "Scan Network" to discover devices on your network and check for potential vulnerabilities.</p>
+        </section>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
