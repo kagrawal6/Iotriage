@@ -7,6 +7,47 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <!-- Scanning Overlay -->
+    <div id="scan-overlay" class="scan-overlay" style="display:none;">
+        <div class="scan-overlay-content">
+            <div class="scan-logo-pulse">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+            </div>
+            <h2>Scanning Network</h2>
+            <p id="scan-target-display" class="scan-target-text">192.168.1.0/24</p>
+
+            <div class="scan-progress-container">
+                <div class="scan-progress-bar">
+                    <div class="scan-progress-fill" id="scan-progress-fill"></div>
+                </div>
+                <div class="scan-progress-percent" id="scan-progress-percent">0%</div>
+            </div>
+
+            <div class="scan-phase" id="scan-phase">Initializing scan engine...</div>
+
+            <div class="scan-terminal" id="scan-terminal">
+                <div class="terminal-line">$ nmap -sV -sC --script vuln <span id="terminal-target">192.168.1.0/24</span></div>
+            </div>
+
+            <div class="scan-stats">
+                <div class="scan-stat">
+                    <span class="stat-number" id="stat-hosts">0</span>
+                    <span class="stat-label">Hosts Found</span>
+                </div>
+                <div class="scan-stat">
+                    <span class="stat-number" id="stat-ports">0</span>
+                    <span class="stat-label">Open Ports</span>
+                </div>
+                <div class="scan-stat">
+                    <span class="stat-number" id="stat-vulns">0</span>
+                    <span class="stat-label">Vulnerabilities</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <header>
@@ -29,7 +70,7 @@
             <div class="input-group">
                 <label for="target">Network Target</label>
                 <div class="input-row">
-                    <input type="text" id="target" placeholder="192.168.0.0/24" value="192.168.0.0/24">
+                    <input type="text" id="target" placeholder="192.168.1.0/24" value="192.168.1.0/24">
                     <button id="scan-btn" onclick="startScan()">
                         <span class="btn-text">Scan Network</span>
                         <span class="btn-loading" style="display:none;">
@@ -47,17 +88,21 @@
                 <div class="card-number" id="total-devices">0</div>
                 <div class="card-label">Devices Found</div>
             </div>
+            <div class="card summary-card card-critical">
+                <div class="card-number" id="critical-risk">0</div>
+                <div class="card-label">Critical</div>
+            </div>
             <div class="card summary-card card-high">
                 <div class="card-number" id="high-risk">0</div>
                 <div class="card-label">High Risk</div>
             </div>
             <div class="card summary-card card-medium">
                 <div class="card-number" id="medium-risk">0</div>
-                <div class="card-label">Medium Risk</div>
+                <div class="card-label">Medium</div>
             </div>
             <div class="card summary-card card-low">
                 <div class="card-number" id="low-risk">0</div>
-                <div class="card-label">Low Risk</div>
+                <div class="card-label">Low / Info</div>
             </div>
         </section>
 
@@ -75,6 +120,48 @@
             <h3>No scan results yet</h3>
             <p>Click "Scan Network" to discover devices on your network and check for potential vulnerabilities.</p>
         </section>
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot-toggle" class="chatbot-toggle" onclick="toggleChatbot()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="chat-badge" id="chat-badge">AI</span>
+    </div>
+
+    <div id="chatbot-panel" class="chatbot-panel" style="display:none;">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                IoTriage AI Assistant
+            </div>
+            <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="chat-msg bot">
+                <div class="chat-avatar">AI</div>
+                <div class="chat-bubble">
+                    Hi! I'm the IoTriage AI assistant. I can explain any vulnerability found in your scan in simple terms.<br><br>
+                    Try asking me:<br>
+                    - "What is a botnet?"<br>
+                    - "Is my smart TV safe?"<br>
+                    - "What does Telnet mean?"<br>
+                    - Click any CVE in the scan results to ask about it!
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" id="chat-input" placeholder="Ask about a vulnerability..." onkeydown="if(event.key==='Enter')sendChat()">
+            <button onclick="sendChat()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+            </button>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>

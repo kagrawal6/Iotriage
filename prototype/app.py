@@ -5,7 +5,7 @@ A simple web app that scans your network and shows discovered devices.
 
 import os
 from flask import Flask, render_template, jsonify, request
-from scanner import scan_network, is_nmap_ready
+from scanner import scan_network, is_nmap_ready, get_chat_response
 
 app = Flask(__name__)
 
@@ -40,7 +40,7 @@ def run_scan():
     global last_scan
 
     data = request.get_json() or {}
-    target = data.get("target", "192.168.0.0/24")
+    target = data.get("target", "192.168.1.0/24")
 
     try:
         # In cloud mode, always use demo data (can't scan user's local network)
@@ -71,6 +71,19 @@ def get_results():
     if last_scan:
         return jsonify(last_scan)
     return jsonify({"error": "No scan results yet. Run a scan first."}), 404
+
+
+@app.route("/api/chat", methods=["POST"])
+def chat():
+    """Chatbot endpoint for vulnerability explanations."""
+    data = request.get_json() or {}
+    message = data.get("message", "")
+
+    if not message.strip():
+        return jsonify({"response": "Please ask me a question about the vulnerabilities found in your scan."})
+
+    response = get_chat_response(message)
+    return jsonify({"response": response})
 
 
 if __name__ == "__main__":
