@@ -12,18 +12,12 @@ async function checkStatus() {
         if (data.is_cloud) {
             badge.textContent = "Demo Mode";
             badge.className = "badge badge-demo";
-            document.getElementById("scan-hint").textContent =
-                "Running in the cloud with sample data. Download and run locally for live network scanning.";
         } else if (data.nmap_ready) {
             badge.textContent = "Live Mode";
             badge.className = "badge badge-live";
-            document.getElementById("scan-hint").textContent =
-                "Nmap detected. Scans will run against your real network.";
         } else {
             badge.textContent = "Demo Mode";
             badge.className = "badge badge-demo";
-            document.getElementById("scan-hint").textContent =
-                "Nmap not found. Showing demo data. Install nmap for live scanning.";
         }
     } catch (e) {
         console.error("Status check failed:", e);
@@ -264,22 +258,6 @@ function renderResults(data) {
 
     const devicesSection = document.getElementById("devices");
     let html = "";
-
-    if (data.mode === "cloud_demo") {
-        html += `<div class="demo-banner">
-            Cloud Demo -- Showing realistic sample data to preview the experience.<br>
-            Run locally with nmap installed to scan your actual network.
-        </div>`;
-    } else if (data.mode === "demo") {
-        html += `<div class="demo-banner">
-            Demo Mode -- Showing sample data. Install nmap for live network scanning.
-        </div>`;
-    } else if (data.mode === "demo_fallback" && data.warning) {
-        html += `<div class="demo-banner">
-            ${data.warning}<br>
-            <strong>Tip:</strong> Run the app as Administrator for live results.
-        </div>`;
-    }
 
     // Sort: critical > high > medium > low
     const riskOrder = { critical: 0, high: 1, medium: 2, low: 3, info: 4 };
