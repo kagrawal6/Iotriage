@@ -4,12 +4,10 @@
    focuses on FUNCTIONALITY, not visual design choices.
    ========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&display=swap');
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --paper: #fffef9;
+    --paper: #ffffff;
     --ink: #2c2c2c;
     --ink-light: #666;
     --pencil: #999;
@@ -19,20 +17,15 @@
     --green-pen: #338833;
     --sketch-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
     --sketch-radius-alt: 15px 225px 15px 255px / 225px 15px 255px 15px;
-    --font-sketch: 'Architects Daughter', cursive;
-    --font-hand: 'Patrick Hand', cursive;
+    --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    font-family: var(--font-hand);
+    font-family: var(--font-main);
     background: var(--paper);
     color: var(--ink);
-    line-height: 1.7;
+    line-height: 1.6;
     min-height: 100vh;
-    /* Subtle ruled-paper lines */
-    background-image:
-        linear-gradient(rgba(180, 180, 220, 0.12) 1px, transparent 1px);
-    background-size: 100% 32px;
 }
 
 .container {
@@ -48,7 +41,7 @@ body {
     margin-bottom: 20px;
     border: 2px dashed var(--pencil);
     border-radius: 8px;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 14px;
     color: var(--ink-light);
     background: rgba(255, 255, 200, 0.3);
@@ -97,7 +90,7 @@ body {
 }
 
 .scan-overlay-content h2 {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 26px;
     font-weight: 400;
     margin-bottom: 4px;
@@ -140,7 +133,7 @@ body {
 }
 
 .scan-progress-percent {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 16px;
     min-width: 44px;
     text-align: right;
@@ -190,7 +183,7 @@ body {
 }
 
 .stat-number {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 32px;
     font-weight: 400;
     line-height: 1;
@@ -230,7 +223,7 @@ header {
 }
 
 h1 {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 28px;
     font-weight: 400;
     letter-spacing: 0;
@@ -247,7 +240,7 @@ h1 {
     padding: 4px 12px;
     border: 2px solid var(--ink);
     border-radius: var(--sketch-radius-alt);
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 14px;
 }
 
@@ -266,7 +259,7 @@ h1 {
 
 .input-group label {
     display: block;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 16px;
     margin-bottom: 8px;
 }
@@ -283,7 +276,7 @@ input[type="text"] {
     border: 2px solid var(--ink);
     border-radius: 8px;
     color: var(--ink);
-    font-family: var(--font-hand);
+    font-family: var(--font-main);
     font-size: 16px;
     outline: none;
 }
@@ -296,7 +289,7 @@ button {
     border: 2px solid var(--ink);
     border-radius: var(--sketch-radius-alt);
     color: white;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 16px;
     cursor: pointer;
     transition: background 0.15s;
@@ -343,7 +336,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 }
 
 .card-number {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 36px;
     font-weight: 400;
     line-height: 1;
@@ -411,7 +404,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .device-icon.low { border-color: var(--green-pen); }
 
 .device-name {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 17px;
 }
 
@@ -424,7 +417,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     padding: 3px 12px;
     border: 2px solid var(--ink);
     border-radius: var(--sketch-radius-alt);
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -460,7 +453,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 2px;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
 }
 
 .detail-item span { font-size: 14px; }
@@ -469,7 +462,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* ==================== SERVICES TABLE ==================== */
 .section-title {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -488,7 +481,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .services-table th {
     text-align: left;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 12px;
     color: var(--ink-light);
     text-transform: uppercase;
@@ -560,14 +553,14 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .cvss-info { border-color: var(--pencil); color: var(--pencil); }
 
 .vuln-severity {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .vuln-title {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 15px;
     margin-bottom: 4px;
 }
@@ -600,7 +593,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .empty-state svg { margin-bottom: 16px; }
 
 .empty-state h3 {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 20px;
     color: var(--ink);
     margin-bottom: 8px;
@@ -649,7 +642,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     top: -4px; right: -4px;
     background: var(--ink);
     color: white;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 10px;
     padding: 2px 6px;
     border-radius: 10px;
@@ -683,7 +676,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 16px;
 }
 
@@ -725,7 +718,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 11px;
     flex-shrink: 0;
     background: var(--paper);
@@ -763,7 +756,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     border: 2px solid var(--ink);
     border-radius: 8px;
     color: var(--ink);
-    font-family: var(--font-hand);
+    font-family: var(--font-main);
     font-size: 14px;
     outline: none;
 }
@@ -807,7 +800,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* ==================== ANNOTATION ARROWS ==================== */
 .annotation {
-    font-family: var(--font-sketch);
+    font-family: var(--font-main);
     font-size: 13px;
     color: var(--blue-pen);
     font-style: italic;
